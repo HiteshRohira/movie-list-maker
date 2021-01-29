@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Header from "./components/Header";
+import PopularMovieGrid from "./components/PopularMovieGrid";
+import TopRatedMovieGrid from "./components/TopRatedMovieGrid";
+import MovieListContextProvider from "./contexts/MovieListContext";
+import UserList from "./components/UserList";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	return (
+		<Router>
+			<div className="App">
+				<MovieListContextProvider>
+					<Header />
+					<Switch>
+						<Route exact path="/">
+							<PopularMovieGrid />
+						</Route>
+						<Route exact path="/top-rated">
+							<TopRatedMovieGrid />
+						</Route>
+						<Route exact path="/user-list">
+							<UserList />
+						</Route>
+					</Switch>
+				</MovieListContextProvider>
+			</div>
+		</Router>
+	);
+};
 
 export default App;

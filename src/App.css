@@ -1,38 +1,184 @@
-.App {
-  text-align: center;
+body {
+	background-color: #fafafa;
+	font-family: "Open Sans", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	margin: 30px 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.title h2 {
+	font-size: 2rem;
+	margin: 5px;
+	color: #f65e56;
 }
 
-.App-link {
-  color: #61dafb;
+#logo {
+	width: 35px;
+	margin: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-links {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.nav-links li {
+	padding: 0 15px;
+	font-size: 18px;
+}
+
+.nav-links li a {
+	margin: 0;
+	padding: 0;
+	color: #000;
+	text-decoration: none;
+}
+
+.nav-links li a:hover {
+	color: #f65e56;
+}
+
+#movie-grid {
+	max-width: 90%;
+	margin: 50px auto;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-gap: 40px;
+	gap: 40px;
+}
+
+#movie-card {
+	width: 200px;
+	margin: 0 auto;
+	box-shadow: 3px 3px 7px -6px rgba(0, 0, 0, 0.75);
+	background-color: #fff;
+	border-radius: 6px;
+	transition: transform 0.1s ease;
+}
+
+#movie-card:hover {
+	transform: scale(1.02);
+	box-shadow: 4px 4px 8px -6px rgba(0, 0, 0, 0.75);
+}
+
+#movie-card img {
+	display: block;
+	overflow: none;
+	border-radius: 6px;
+	width: 100%;
+}
+
+.movie-details {
+	padding: 10px 20px;
+}
+
+.movie-details h4 {
+	font-size: 16px;
+	display: block;
+	margin: 15px auto;
+}
+
+.movie-details .card-container span {
+	font-size: 14px;
+}
+
+.card-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 10px auto;
+}
+
+.card-container button {
+	border: 2px solid #000;
+	border-radius: 50%;
+	padding: 6px;
+	background: #fff;
+}
+
+.card-container button:hover {
+	background: #000;
+	color: #fafafa;
+}
+
+.card-container button i {
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+
+#loading {
+	position: absolute;
+	top: 50vh;
+	left: 48vw;
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-end;
+	width: 100px;
+	height: 100px;
+}
+
+#loading div {
+	width: 20px;
+	height: 20px;
+	background-color: #f65e56;
+	border-radius: 50%;
+	animation: bounce 0.5s cubic-bezier(0.19, 0.57, 0.3, 0.98) infinite alternate;
+}
+
+#loading div:nth-child(2) {
+	animation-delay: 0.1s;
+}
+#loading div:nth-child(3) {
+	animation-delay: 0.2s;
+}
+#loading div:nth-child(4) {
+	animation-delay: 0.3s;
+}
+
+@keyframes bounce {
+	from {
+		transform: translateY(0);
+	}
+	to {
+		transform: translateY(-100px);
+	}
+}
+
+@media (max-width: 1300px) {
+	#movie-grid {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+@media (max-width: 1100px) {
+	#movie-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (max-width: 800px) {
+	#movie-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 500px) {
+	#movie-grid {
+		grid-template-columns: repeat(1, 1fr);
+	}
 }
