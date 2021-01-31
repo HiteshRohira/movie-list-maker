@@ -3,12 +3,19 @@ import React, { createContext, useEffect, useState } from "react";
 export const MovieListContext = createContext();
 
 const MovieListContextProvider = (props) => {
-	const [movieList, setMovieList] = useState([]);
+	const localMovies = localStorage.getItem("movies")
+		? JSON.parse(localStorage.getItem("movies"))
+		: [];
+	const [movieList, setMovieList] = useState(localMovies);
 
-	const addMovie = (movieId) => {
-		if (!movieList.includes(movieId)) {
-			setMovieList([...movieList, movieId]);
+	const addMovie = (movie) => {
+		if (!movieList.includes(movie)) {
+			setMovieList([...movieList, movie]);
 		}
+	};
+
+	const removeMovie = (movieId) => {
+		setMovieList(movieList.filter((movie) => movie.id !== movieId));
 	};
 
 	useEffect(() => {
@@ -16,7 +23,7 @@ const MovieListContextProvider = (props) => {
 	}, [movieList]);
 
 	return (
-		<MovieListContext.Provider value={{ movieList, addMovie }}>
+		<MovieListContext.Provider value={{ movieList, addMovie, removeMovie }}>
 			{props.children}
 		</MovieListContext.Provider>
 	);

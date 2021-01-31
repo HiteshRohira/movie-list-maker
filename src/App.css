@@ -1,3 +1,7 @@
+*:focus {
+	outline: none;
+}
+
 body {
 	background-color: #fafafa;
 	font-family: "Open Sans", sans-serif;
@@ -67,11 +71,11 @@ header {
 	box-shadow: 3px 3px 7px -6px rgba(0, 0, 0, 0.75);
 	background-color: #fff;
 	border-radius: 6px;
-	transition: transform 0.1s ease;
+	transition: transform 0.1s ease-in-out;
 }
 
 #movie-card:hover {
-	transform: scale(1.02);
+	transform: scale(1.01);
 	box-shadow: 4px 4px 8px -6px rgba(0, 0, 0, 0.75);
 }
 
@@ -103,19 +107,22 @@ header {
 	margin: 10px auto;
 }
 
-.card-container button {
-	border: 2px solid #000;
+.card-container .add-btn {
+	border: 2px solid #fafafa;
 	border-radius: 50%;
 	padding: 6px;
+	font-size: 15px;
 	background: #fff;
+	box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.2);
 }
 
-.card-container button:hover {
-	background: #000;
-	color: #fafafa;
+.card-container .add-btn:hover {
+	background: #0298d8;
+	color: #fff;
+	border-color: #0298d8;
 }
 
-.card-container button i {
+.card-container .add-btn i {
 	margin: 0;
 	padding: 0;
 	display: block;
@@ -181,4 +188,46 @@ header {
 	#movie-grid {
 		grid-template-columns: repeat(1, 1fr);
 	}
+}
+
+.no-movies {
+	position: absolute;
+	top: 35vh;
+	left: calc(50vw - 175px);
+}
+
+.no-movies img {
+	display: block;
+	width: 300px;
+	height: auto;
+	margin: auto;
+}
+
+.no-movies h3 {
+	line-height: 1;
+	font-weight: 400;
+	font-size: 20px;
+	text-align: center;
+	margin: 20px 0;
+}
+
+.remove-btn {
+	border: 2px solid #fafafa;
+	border-radius: 50%;
+	padding: 6px;
+	background: #fff;
+	box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.2);
+}
+
+.remove-btn:hover {
+	background: #f65e56;
+	color: #fafafa;
+	border-color: #f65e56;
+	/* box-shadow: 2px 2px 3px -2px rgba(0, 0, 0, 0.2); */
+}
+
+.remove-btn i {
+	margin: 0;
+	padding: 0;
+	display: block;
 }

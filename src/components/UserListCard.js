@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { MovieListContext } from "../contexts/MovieListContext";
 
 const MovieCard = ({ movie }) => {
-	const { addMovie } = useContext(MovieListContext);
+	console.log(movie);
+	const { removeMovie } = useContext(MovieListContext);
 	return (
 		<div id="movie-card">
 			<img
@@ -18,10 +19,10 @@ const MovieCard = ({ movie }) => {
 					</span>
 					<button
 						onClick={() => {
-							addMovie(movie);
+							removeMovie(movie.id);
 						}}
-						className="add-btn">
-						<i className="fas fa-plus"></i>
+						className="remove-btn">
+						<i className="far fa-trash-alt"></i>
 					</button>
 				</div>
 			</div>

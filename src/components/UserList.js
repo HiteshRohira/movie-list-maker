@@ -1,48 +1,21 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import MovieCard from "./MovieCard";
+import React, { useContext } from "react";
+import UserListCard from "./UserListCard";
+import notFound from "../img/not-found.png";
+import { MovieListContext } from "../contexts/MovieListContext";
 
 const UserList = () => {
-	const [movies, setMovies] = useState([]);
-	const [isLoading, setIsLoading] = useState(true);
+	const { movieList } = useContext(MovieListContext);
 
-	const localMovies = localStorage.getItem("movies")
-		? JSON.parse(localStorage.getItem("movies"))
-		: [];
-
-	useEffect(() => {
-		const fetchMovies = async () => {
-			for (let movie of localMovies) {
-				const result = await axios(
-					`https://api.themoviedb.org/3/movie/${movie}?api_key=4b729af6988177029d56cd7cc8ecfabe`
-				);
-				// console.log(result.data);
-				setMovies(...movies, result.data.results);
-			}
-			setIsLoading(false);
-		};
-
-		fetchMovies();
-	}, [movies]);
-
-	if (localMovies === []) {
-		return <p>No Movies found</p>;
-	}
-
-	return localMovies === [] ? (
-		<p>No Movies added</p>
+	return movieList.length === 0 ? (
+		<div className="no-movies">
+			<img src={notFound} alt="No movies found" />
+			<h3>No Movies found. Please add some movies...</h3>
+		</div>
 	) : (
 		<div id="movie-grid">
-			{isLoading ? (
-				<div id="loading">
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-				</div>
-			) : (
-				movies.map((movie) => <MovieCard movie={movie} key={movie.id} />)
-			)}
+			{movieList.map((movie) => (
+				<UserListCard movie={movie} key={movie.id} />
+			))}
 		</div>
 	);
 };
