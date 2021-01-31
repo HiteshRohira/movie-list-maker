@@ -5,6 +5,7 @@ import PopularMovieGrid from "./components/PopularMovieGrid";
 import TopRatedMovieGrid from "./components/TopRatedMovieGrid";
 import MovieListContextProvider from "./contexts/MovieListContext";
 import UserList from "./components/UserList";
+import Search from "./components/Search";
 
 const App = () => {
 	return (
@@ -21,6 +22,9 @@ const App = () => {
 						</Route>
 						<Route exact path="/user-list">
 							<UserList />
+						</Route>
+						<Route exact path="/search">
+							<Search />
 						</Route>
 					</Switch>
 				</MovieListContextProvider>

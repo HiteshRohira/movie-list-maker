@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { MovieListContext } from "../contexts/MovieListContext";
 
 const MovieCard = ({ movie }) => {
-	console.log(movie);
 	const { removeMovie } = useContext(MovieListContext);
 	return (
 		<div id="movie-card">

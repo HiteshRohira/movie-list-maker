@@ -19,6 +19,11 @@ const Header = () => {
 				<li>
 					<Link to="/user-list">My List</Link>
 				</li>
+				<li>
+					<Link to="/search">
+						<i className="fas fa-search"></i>
+					</Link>
+				</li>
 			</ul>
 		</header>
 	);
