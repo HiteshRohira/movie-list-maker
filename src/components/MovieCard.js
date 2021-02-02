@@ -1,11 +1,18 @@
 import React, { useContext, useState } from "react";
 import { MovieListContext } from "../contexts/MovieListContext";
+import { ToastContext } from "../contexts/TooltipContext";
 import MovieDetailsModal from "./MovieDetailsModal";
 
 const MovieCard = ({ movie }) => {
 	const { addMovie } = useContext(MovieListContext);
+	const { openToast } = useContext(ToastContext);
 
 	const [isOpen, setIsOpen] = useState(false);
+
+	const handleAddMovie = () => {
+		addMovie(movie);
+		openToast();
+	};
 
 	const closeModal = () => {
 		setIsOpen(false);
@@ -27,11 +34,7 @@ const MovieCard = ({ movie }) => {
 						<i className="fas fa-star"></i>
 						{` ${movie.vote_average}`}
 					</span>
-					<button
-						onClick={() => {
-							addMovie(movie);
-						}}
-						className="add-btn">
+					<button onClick={handleAddMovie} className="add-btn">
 						<i className="fas fa-plus"></i>
 					</button>
 				</div>

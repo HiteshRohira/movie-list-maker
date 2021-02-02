@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ToastContext } from "../contexts/TooltipContext";
 
 const Alert = () => {
+	const { isOpen } = useContext(ToastContext);
 	return (
-		<div className="alert">
-			<p>Movie added to your list.</p>
-		</div>
+		isOpen && (
+			<div className="alert">
+				<p>Movie added to your list !</p>
+			</div>
+		)
 	);
 };
 

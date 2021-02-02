@@ -373,3 +373,22 @@ header {
 		flex-direction: column;
 	}
 }
+
+.alert {
+	position: fixed;
+	top: 4vh;
+	left: calc((100vw - 323px) / 2);
+	z-index: 1;
+	padding: 18px;
+	background: #68d391d8;
+	border: 2px solid #68d391d8;
+	border-radius: 10px;
+}
+
+.alert p {
+	font-size: 24px;
+	margin: 0;
+	color: #fafafa;
+	line-height: 1;
+	font-weight: 600;
+}

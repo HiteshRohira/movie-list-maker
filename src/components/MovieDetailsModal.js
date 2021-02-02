@@ -1,5 +1,4 @@
 import React from "react";
-// import { ModalContext } from "../contexts/ModalContext";
 
 const MovieDetailsModal = ({ movie }) => {
 	return (
